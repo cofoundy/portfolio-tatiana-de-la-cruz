@@ -1,0 +1,134 @@
+% Harvard-Format Professional CV
+% Compile with: xelatex cv-delacruz.tex
+
+\documentclass[10.5pt,letterpaper]{article}
+
+\usepackage[margin=0.5in, top=0.4in, bottom=0.4in]{geometry}
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{tabularx}
+
+% --- Fonts ---
+\setmainfont{Times New Roman}
+\setsansfont{Helvetica Neue}[BoldFont=Helvetica Neue Bold, ItalicFont=Helvetica Neue Italic]
+
+% --- Colors ---
+\definecolor{headrule}{HTML}{2c3e50}
+\definecolor{linkblue}{HTML}{1a5276}
+
+% --- Hyperlinks ---
+\hypersetup{colorlinks=true, urlcolor=linkblue, linkcolor=linkblue, pdfborder={0 0 0}}
+
+% --- Section Formatting ---
+\titleformat{\section}
+  {\large\bfseries\centering}
+  {}
+  {0em}
+  {\vspace{-0.4em}\hrulefill\quad}[\quad\hrulefill\vspace{-0.4em}]
+\titlespacing{\section}{0pt}{0.6em}{0.3em}
+
+% --- List Formatting ---
+\setlist[itemize]{nosep, left=0pt, label=\textbullet, itemsep=1pt, topsep=2pt}
+
+% --- No page numbers ---
+\pagestyle{empty}
+
+% --- Custom Commands ---
+\newcommand{\entry}[4]{%
+  \noindent\textbf{#1} \hfill #2 \par\nopagebreak
+  \textit{#3} \hfill \textit{#4} \par\nopagebreak
+}
+
+\begin{document}
+
+% ============================================
+% HEADER
+% ============================================
+\begin{center}
+  {\LARGE\bfseries Tatiana Judith De La Cruz Gutierrez} \\[4pt]
+  \faIcon{map-marker-alt}\enspace Magdalena del Mar, Lima, Per\'u
+  \quad\faIcon{envelope}\enspace \href{mailto:tatiana.delacruzg216@gmail.com}{tatiana.delacruzg216@gmail.com}
+  \quad\faIcon{phone}\enspace 943294182
+  \\[2pt]
+  \faIcon{globe}\enspace \href{https://tatiana-de-la-cruz.cofoundy.dev}{tatiana-de-la-cruz.cofoundy.dev}
+\end{center}
+
+\vspace{-0.4em}
+\noindent\rule{\textwidth}{0.8pt}
+\vspace{-0.8em}
+
+% ============================================
+% EDUCATION
+% ============================================
+\section{Educaci\'on}
+
+\entry{Universidad Cat\'olica Los \'Angeles de Chimbote}{Chimbote, Per\'u}{Qu\'imico Farmac\'eutico}{2015}
+\vspace{0.3em}
+
+\noindent\textbf{Diplomados:} Contrataciones del Estado (Hegel) $\cdot$ Gesti\'on P\'ublica (Villagaray) $\cdot$ Nueva Ley de Contrataciones P\'ublicas (UPC)
+\vspace{0.3em}
+
+% ============================================
+% EXPERIENCE
+% ============================================
+\section{Experiencia Profesional}
+
+\entry{SaludCare Per\'u}{Lima, Per\'u}{Gerente General}{Ago 2022 -- Presente}
+\begin{itemize}
+  \item Dirige empresa de comercializaci\'on de productos y herramientas tecnol\'ogicas para profesionales del sector salud en el mercado peruano
+  \item Lidera estrategia de negocio orientada a digitalizar procesos del sector salud
+\end{itemize}
+\vspace{0.3em}
+
+\entry{CENARES -- Direcci\'on de Programaci\'on}{Lima, Per\'u}{Equipo de Planificaci\'on}{Oct 2024 -- Dic 2025}
+\begin{itemize}
+  \item Elabor\'o informes t\'ecnicos y particip\'o en la programaci\'on de Recursos Estrat\'egicos en Salud para Unidades Ejecutoras con convenio SIS a nivel nacional
+  \item Desarroll\'o Especificaciones T\'ecnicas para la adquisici\'on de Recursos Estrat\'egicos en Salud
+  \item Integr\'o Comit\'e de Selecci\'on en procesos de contrataci\'on del CENARES
+\end{itemize}
+\vspace{0.3em}
+
+\entry{CENARES -- MINSA}{Lima, Per\'u}{Monitoreo de Recursos Estrat\'egicos en Salud}{Nov 2023 -- Mar 2024}
+\begin{itemize}
+  \item Monitor\'e disponibilidad de Recursos Estrat\'egicos en Salud en Unidades Ejecutoras de 7 regiones del Per\'u (Amazonas, Cusco, Hu\'anuco, Loreto, San Mart\'in, Ucayali y Madre de Dios)
+  \item Coordin\'o redistribuciones de recursos a nivel nacional, optimizando abastecimiento interregional
+\end{itemize}
+\vspace{0.3em}
+
+\entry{EsSalud -- Red Prestacional Almenera}{Lima, Per\'u}{Analista de Medicamentos y Medicina Complementaria}{Dic 2018 -- May 2023}
+\begin{itemize}
+  \item Evalu\'o requerimientos mensuales de productos farmac\'euticos y monitoreo de medicamentos no incluidos en el Petitorio para la Red Prestacional Almenara
+  \item Gestion\'o expedientes de requerimiento basados en criterios t\'ecnicos de la CEABE
+\end{itemize}
+\vspace{0.3em}
+
+\entry{EsSalud -- CEABE}{Lima, Per\'u}{Especialista (VI) en An\'alisis de Requerimientos}{Oct 2021 -- Mar 2022}
+\begin{itemize}
+  \item Coordin\'o con \'areas log\'isticas y de almac\'en la adquisici\'on y distribuci\'on de Productos Farmac\'euticos
+  \item Particip\'o como miembro de Comit\'es de Selecci\'on en procesos de compra a nivel nacional
+  \item Designada Presidente Titular de Subasta Inversa Electr\'onica N\textdegree07-2020-ESSALUD-CEABE-1
+\end{itemize}
+\vspace{0.3em}
+
+\entry{Ecker Per\'u S.A.}{Lima, Per\'u}{Director T\'ecnico}{Dic 2015 -- Ene 2018}
+\begin{itemize}
+  \item Administr\'o recursos, control de inventarios y capacitaci\'on de personal; logr\'o ascenso de categor\'ia de la empresa
+\end{itemize}
+\vspace{0.3em}
+
+% ============================================
+% SKILLS
+% ============================================
+\section{Competencias}
+
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{T\'ecnicas:} & Gesti\'on Farmac\'eutica, Contrataciones del Estado, Recursos Estrat\'egicos en Salud, Monitoreo de Medicamentos, Log\'istica Hospitalaria, Evaluaci\'on T\'ecnica, Programaci\'on SIS \\[3pt]
+\textbf{Certificaciones:} & Contrataciones del Estado (Hegel), Gesti\'on P\'ublica (Villagaray), Farmacia Cl\'inica COVID-19 (Hosp. Emergencias Grau) \\[3pt]
+\textbf{Idiomas:} & Espa\~nol (nativo) \\
+\end{tabularx}
+
+\end{document}
