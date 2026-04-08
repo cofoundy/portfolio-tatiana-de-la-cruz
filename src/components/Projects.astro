@@ -1,0 +1,68 @@
+---
+import { siteConfig } from "../config";
+const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+---
+
+{hasProjects && (
+  <>
+    <div class="w-full h-1 accent-bar-shimmer" style={`background: linear-gradient(90deg, ${siteConfig.accentColor} 0%, ${siteConfig.highlightColor} 50%, ${siteConfig.accentColor} 100%)`}></div>
+
+    <section id="projects" class="py-12 md:py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="mb-10 reveal-left">
+          <h2 class="text-3xl md:text-4xl font-bold" style={`color: ${siteConfig.accentColor}`}>Proyectos</h2>
+          <div class="w-16 h-1 mt-3 rounded-full" style={`background-color: ${siteConfig.highlightColor}`}></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {siteConfig.projects.map((project, index) => {
+            const Component = project.link ? "a" : "div";
+            const linkProps = project.link ? { href: project.link, target: "_blank", rel: "noopener noreferrer" } : {};
+
+            return (
+              <Component
+                {...linkProps}
+                class={`reveal stagger-${index + 1} group card-hover card-shine p-6 rounded-xl bg-white ${project.link ? "cursor-pointer" : ""}`}
+                style={`border: 1px solid ${siteConfig.accentColor}15`}
+              >
+                <!-- Number -->
+                <div
+                  class="w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold mb-4 transition-transform duration-300 group-hover:scale-110"
+                  style={`background-color: ${siteConfig.highlightColor}20; color: ${siteConfig.highlightColor}`}
+                >
+                  0{index + 1}
+                </div>
+
+                <h3 class="text-lg font-semibold mb-2" style={`color: ${siteConfig.accentColor}`}>
+                  {project.name}
+                </h3>
+                <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                  <Fragment set:html={project.description} />
+                </p>
+
+                {project.skills && project.skills.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5">
+                    {project.skills.map((skill) => (
+                      <span class="text-xs px-2 py-1 rounded-full" style={`background-color: ${siteConfig.accentColor}08; color: ${siteConfig.accentColor}`}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {project.link && (
+                  <div class="mt-4 flex items-center gap-1 text-sm font-medium transition-all duration-300 group-hover:gap-2" style={`color: ${siteConfig.highlightColor}`}>
+                    Ver proyecto
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </div>
+                )}
+              </Component>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  </>
+)}

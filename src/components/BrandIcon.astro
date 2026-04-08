@@ -1,0 +1,45 @@
+---
+/**
+ * BrandIcon — Manifest-driven, ratio-aware icon component
+ *
+ * Auto-discovers icons from public/icons/. Reads SVG viewBox to detect
+ * logotypes (wide, ratio > 1.8) vs isotipos (square, ~1:1).
+ *
+ * Usage:
+ *   <BrandIcon name="Python" size={14} />         → square icon, 14x14
+ *   <BrandIcon name="BBVA" size={24} />            → wide logotype, height=24, width=auto
+ *   <BrandIcon name="Docker" size={16} dark />     → inverted for dark backgrounds
+ *
+ * Renders nothing if no icon found (no fallback — clean absence).
+ */
+import { getIconInfo } from "../utils/icons";
+
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+  dark?: boolean;
+}
+
+const { name, size = 20, class: className = "", dark = false } = Astro.props;
+const icon = getIconInfo(name);
+---
+
+{icon.file && (
+  <img
+    src={`/icons/${icon.file}`}
+    alt={name}
+    height={size}
+    width={icon.isLogotype ? undefined : size}
+    class:list={[icon.format === "png" ? "rounded" : "", className]}
+    loading="lazy"
+    style={[
+      "display:inline-block",
+      "vertical-align:middle",
+      "object-fit:contain",
+      `max-height:${size}px`,
+      icon.isLogotype ? "width:auto" : `width:${size}px`,
+      dark ? "filter:brightness(0) invert(1) brightness(0.85)" : "",
+    ].filter(Boolean).join(";")}
+  />
+)}

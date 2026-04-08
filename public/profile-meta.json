@@ -1,0 +1,12 @@
+{
+  "face_detected": true,
+  "gaze_direction": "right",
+  "flipped": true,
+  "layout_hint": "text-left",
+  "recommended_photo_side": "left",
+  "size": 800,
+  "qa": {
+    "offset_x": 27,
+    "offset_y": 1
+  }
+}

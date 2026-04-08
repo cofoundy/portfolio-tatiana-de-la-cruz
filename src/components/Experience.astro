@@ -1,0 +1,67 @@
+---
+import { siteConfig } from "../config";
+import BrandIcon from "./BrandIcon.astro";
+const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
+---
+
+{hasExperience && (
+  <section id="experience" class="py-12 md:py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="mb-10 reveal-left">
+        <h2 class="text-3xl md:text-4xl font-bold" style={`color: ${siteConfig.accentColor}`}>Experiencia</h2>
+        <div class="w-16 h-1 mt-3 rounded-full" style={`background-color: ${siteConfig.highlightColor}`}></div>
+      </div>
+
+      <!-- Horizontal Timeline (Desktop) -->
+      <div class="hidden md:block relative mb-8 reveal stagger-1">
+        <div class="absolute top-4 left-0 right-0 h-0.5 timeline-line" style={`background-color: ${siteConfig.accentColor}30`}></div>
+        <div class="flex justify-between">
+          {siteConfig.experience.map((exp, index) => (
+            <div class="relative flex flex-col items-center" style="flex: 1">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center z-10" style={`background-color: ${siteConfig.highlightColor}`}>
+                <span class="text-white text-xs font-bold">{index + 1}</span>
+              </div>
+              <div class="mt-4 text-center">
+                <p class="text-sm font-semibold" style={`color: ${siteConfig.highlightColor}`}>
+                  {exp.dateRange.split(' - ')[0]}
+                </p>
+                <p class="text-xs mt-1 text-gray-500">{exp.company.split('/')[0].trim()}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Experience Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        {siteConfig.experience.map((exp, index) => (
+          <div
+            class={`reveal stagger-${index + 2} card-hover p-5 rounded-xl bg-gray-50`}
+            style={`border: 1px solid ${siteConfig.accentColor}12`}
+          >
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
+              <div>
+                <h3 class="text-lg font-semibold" style={`color: ${siteConfig.accentColor}`}>{exp.title}</h3>
+                <p class="text-base font-medium inline-flex items-center gap-1.5" style={`color: ${siteConfig.highlightColor}`}>
+                  <BrandIcon name={exp.company.split('/')[0].trim()} size={18} />
+                  {exp.company}
+                </p>
+              </div>
+              <span class="text-xs px-3 py-1 rounded-full mt-2 sm:mt-0 self-start" style={`background-color: ${siteConfig.accentColor}08; color: ${siteConfig.accentColor}`}>
+                {exp.dateRange}
+              </span>
+            </div>
+            <ul class="space-y-1.5">
+              {exp.bullets.map((bullet) => (
+                <li class="flex items-start text-sm text-gray-600">
+                  <span class="inline-block w-1.5 h-1.5 rounded-full mt-1.5 mr-2 flex-shrink-0" style={`background-color: ${siteConfig.highlightColor}`} />
+                  <Fragment set:html={bullet} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
